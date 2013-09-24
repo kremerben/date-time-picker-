@@ -1,0 +1,741 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+    <title>Datepicker &amp; Difference</title>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7/themes/redmond/ajquery-ui.css" media="screen" />
+	<link rel="stylesheet" media="all" type="text/css" href="/time/jquery-ui-1.8.16.custom.css" />
+		<style type="text/css"> 
+			/* body,img,p,h1,h2,h3,h4,h5,h6,form,table,td,ul,li,dl,dt,dd,pre,blockquote,fieldset,label{
+				margin:0;
+				padding:0;
+				border:0;
+			}
+			body{ background-color: #363531; border-top: solid 4px #C60; font: 90% Arial, Helvetica, sans-serif; padding: 20px; }
+			h1,h2{ margin: 10px 0; }
+			p{ margin: 10px 0; }
+			
+			pre{ padding: 20px; background-color: #ffffcc; border: solid 1px #fff; }
+			.timecardwrapper{ background-color: #ffffff; width: 800px; border: solid 1px #eeeeee; padding: 20px; margin: 0 auto; }
+			.example-container{ background-color: #f4f4f4; border-bottom: solid 2px #777777; margin: 0 0 40px 0; padding: 20px; }
+			.example-container p{ font-weight: bold; }
+			.example-container > dl dt{ font-weight: bold; height: 20px; }
+			.example-container > dl dd{ margin: -20px 0 10px 100px; border-bottom: solid 1px #fff; }
+			.example-container input{ width: 150px; }*/
+			.clear{ clear: both; }
+			#ui-datepicker-div, .ui-datepicker{ font-size: 80%; }
+			
+			/* css for timepicker */
+			.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
+			.ui-timepicker-div dl { text-align: left; }
+			.ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; }
+			.ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
+			.ui-timepicker-div td { font-size: 90%; }
+			.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+			
+		</style> 
+
+		<script type="text/javascript" src="/time/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="/time/jquery-1.3.2.min.js"></script>
+		<script type="text/javascript" src="/time/jquery-ui-1.8.16.custom.min.js"></script>
+		<script type="text/javascript" src="/time/jquery-ui-timepicker-addon.js"></script>
+		<script type="text/javascript" src="/time/jquery-ui-sliderAccess.js"></script>
+    
+</head>
+<body>
+<script type="text/javascript">
+</script>
+<div class="timecardwrapper">
+<!-- (cut-and-paste starting here) --><!-- START OF TRACKVIA PUBLIC FORM --><!-- #public_form# start --><!-- do not change this line --><form action="http://www.trackvia.com/app/publicticket" method="post" enctype="multipart/form-data">
+<input type="hidden" name="redirect" value="/time/test14.html"/>
+<table class='publicform'>
+<tr><td colspan="2"><h3>Live test of Consultant Time Card</h3></td></tr>
+
+
+	<tr>
+		<td>Consultant Name</td>
+		<td>
+			<fieldset>
+<table border="0" id="checkbox_table_text000-">
+<tr>
+   <td valign="top"><input type="checkbox"  name="text000-user1" id="text000-user1"><label for="text000-user1">&nbsp;user1</label></td>
+   <td width="25px">&nbsp;</td>
+   <td valign="top"><input type="checkbox"  name="text000-user2" id="text000-user2"><label for="text000-user2">&nbsp;user2</label></td>
+   <td width="25px">&nbsp;</td>
+   <td valign="top"><input type="checkbox"  name="text000-user3" id="text000-user3"><label for="text000-user3">&nbsp;user3</label></td>
+   <td width="25px">&nbsp;</td>
+</tr>
+</table>
+</fieldset>
+<input type="hidden" name="text000_tvedited" value="on" />		</td>
+	</tr>
+	<tr>
+		<td>Location</td>
+		<td>
+			<select  id="text001" name="text001">
+    <option value="">&nbsp;
+    <option value="Florida" >Florida
+    <option value="Other" >Other
+    </select>
+		</td>
+	</tr>
+
+<!-- DATETIME START -->
+<tr><td colspan="2">
+
+
+    <script type="text/javascript">
+    $(function() {
+                $("#hoursworked1").change(DatePicked);
+                DatePicked();
+        });
+
+	$(function() {
+                $("#hoursworked2").change(DatePicked);
+                DatePicked();
+        });
+	$(function() {
+                $("#hoursworked3").change(DatePicked);
+                DatePicked();
+        });
+	$(function() {
+                $("#hoursworked4").change(DatePicked);
+                DatePicked();
+        });
+	$(function() {
+                $("#hoursworked5").change(DatePicked);
+                DatePicked();
+        });
+	$(function() {
+                $("#hoursworked6").change(DatePicked);
+                DatePicked();
+        });
+	$(function() {
+                $("#hoursworked7").change(DatePicked);
+                DatePicked();
+        });
+
+    
+var DatePicked = function() {
+
+//start day 1
+var datetime007 = $('#datetime007').datetimepicker({
+	stepMinute: 15,
+	stepHour: 1,
+	hourGrid: 3,
+	minuteGrid: 15,
+	hour: 9,
+	minute: 00,
+	timeFormat: 'hh:mm:ss',
+	dateFormat: 'yy-mm-dd',
+	timezone: 'America/New_York',
+    onClose: function(dateText, inst) {
+        var endDateTextBox = $('#datetime008');
+        if (endDateTextBox.val() != '') {
+            var testStartDate = new Date(dateText);
+            var testEndDate = new Date(endDateTextBox.val());
+            if (testStartDate > testEndDate)
+                endDateTextBox.val(dateText);
+        }
+        else {
+            endDateTextBox.val(dateText);
+        }
+    },
+    onSelect: function (selectedDateTime){
+        var start = $(this).datetimepicker('getDate');
+        $('#datetime008').datetimepicker('option', 'minDate', new Date(start.getTime()));
+    }
+});
+// end var datetime007
+
+
+var datetime008 = $('#datetime008').datetimepicker({
+	stepMinute: 15,
+	hourGrid: 3,
+	minuteGrid: 15,
+	stepHour: 1,
+	hour: 17,
+	minute: 00,
+	timeFormat: 'hh:mm:ss',
+	dateFormat: 'yy-mm-dd',
+	timezone: 'America/New_York',
+    onClose: function(dateText, inst) {
+        var startDateTextBox = $('#datetime007');
+        if (startDateTextBox.val() != '') {
+            var testStartDate = new Date(startDateTextBox.val());
+            var testEndDate = new Date(dateText);
+            if (testStartDate > testEndDate)
+                startDateTextBox.val(dateText);
+        }
+        else {
+            startDateTextBox.val(dateText);
+        }
+    },
+    onSelect: function (selectedDateTime){
+        var end = $(this).datetimepicker('getDate');
+        $('#datetime007').datetimepicker('option', 'maxDate', new Date(end.getTime()) );
+//	DatePicked();
+    }
+});
+// end var datetime008
+
+//start day 2
+var datetime000 = $('#datetime000').datetimepicker({
+	stepMinute: 15,
+		stepHour: 1,
+		hourGrid: 3,
+	minuteGrid: 15,
+			hour: 9,
+	minute: 00,
+	timeFormat: 'hh:mm:ss',
+	dateFormat: 'yy-mm-dd',
+	timezone: 'America/New_York',
+
+    onClose: function(dateText, inst) {
+        var endDateTextBox = $('#datetime006');
+        if (endDateTextBox.val() != '') {
+            var testStartDate = new Date(dateText);
+            var testEndDate = new Date(endDateTextBox.val());
+            if (testStartDate > testEndDate)
+                endDateTextBox.val(dateText);
+        }
+        else {
+            endDateTextBox.val(dateText);
+        }
+    },
+    onSelect: function (selectedDateTime){
+        var start = $(this).datetimepicker('getDate');
+        $('#datetime006').datetimepicker('option', 'minDate', new Date(start.getTime()));
+    }
+});
+// end var datetime000
+
+var datetime006 = $('#datetime006').datetimepicker({
+	stepMinute: 15,
+	hourGrid: 3,
+	minuteGrid: 15,
+	stepHour: 1,
+	hour: 17,
+	minute: 00,
+	timeFormat: 'hh:mm:ss',
+	dateFormat: 'yy-mm-dd',
+	timezone: 'America/New_York',
+    onClose: function(dateText, inst) {
+        var startDateTextBox = $('#datetime000');
+        if (startDateTextBox.val() != '') {
+            var testStartDate = new Date(startDateTextBox.val());
+            var testEndDate = new Date(dateText);
+            if (testStartDate > testEndDate)
+                startDateTextBox.val(dateText);
+        }
+        else {
+            startDateTextBox.val(dateText);
+        }
+    },
+    onSelect: function (selectedDateTime){
+        var end = $(this).datetimepicker('getDate');
+        $('#datetime000').datetimepicker('option', 'maxDate', new Date(end.getTime()) );
+//	DatePicked();
+    }
+});
+// end day 2
+
+//start day 3
+var datetime001 = $('#datetime001').datetimepicker({
+	stepMinute: 15,
+		stepHour: 1,
+		hourGrid: 3,
+	minuteGrid: 15,
+			hour: 9,
+	minute: 00,
+	timeFormat: 'hh:mm:ss',
+	dateFormat: 'yy-mm-dd',
+	timezone: 'America/New_York',
+
+    onClose: function(dateText, inst) {
+        var endDateTextBox = $('#datetime009');
+        if (endDateTextBox.val() != '') {
+            var testStartDate = new Date(dateText);
+            var testEndDate = new Date(endDateTextBox.val());
+            if (testStartDate > testEndDate)
+                endDateTextBox.val(dateText);
+        }
+        else {
+            endDateTextBox.val(dateText);
+        }
+    },
+    onSelect: function (selectedDateTime){
+        var start = $(this).datetimepicker('getDate');
+        $('#datetime009').datetimepicker('option', 'minDate', new Date(start.getTime()));
+    }
+});
+// end var datetime000
+
+var datetime009 = $('#datetime009').datetimepicker({
+	stepMinute: 15,
+	hourGrid: 3,
+	minuteGrid: 15,
+	stepHour: 1,
+	hour: 17,
+	minute: 00,
+	timeFormat: 'hh:mm:ss',
+	dateFormat: 'yy-mm-dd',
+	timezone: 'America/New_York',
+    onClose: function(dateText, inst) {
+        var startDateTextBox = $('#datetime001');
+        if (startDateTextBox.val() != '') {
+            var testStartDate = new Date(startDateTextBox.val());
+            var testEndDate = new Date(dateText);
+            if (testStartDate > testEndDate)
+                startDateTextBox.val(dateText);
+        }
+        else {
+            startDateTextBox.val(dateText);
+        }
+    },
+    onSelect: function (selectedDateTime){
+        var end = $(this).datetimepicker('getDate');
+        $('#datetime001').datetimepicker('option', 'maxDate', new Date(end.getTime()) );
+//	DatePicked();
+    }
+});
+// end day 3
+
+//start day 4
+var datetime002 = $('#datetime002').datetimepicker({
+	stepMinute: 15,
+		stepHour: 1,
+		hourGrid: 3,
+	minuteGrid: 15,
+			hour: 9,
+	minute: 00,
+	timeFormat: 'hh:mm:ss',
+	dateFormat: 'yy-mm-dd',
+	timezone: 'America/New_York',
+
+    onClose: function(dateText, inst) {
+        var endDateTextBox = $('#datetime010');
+        if (endDateTextBox.val() != '') {
+            var testStartDate = new Date(dateText);
+            var testEndDate = new Date(endDateTextBox.val());
+            if (testStartDate > testEndDate)
+                endDateTextBox.val(dateText);
+        }
+        else {
+            endDateTextBox.val(dateText);
+        }
+    },
+    onSelect: function (selectedDateTime){
+        var start = $(this).datetimepicker('getDate');
+        $('#datetime010').datetimepicker('option', 'minDate', new Date(start.getTime()));
+    }
+});
+// end var datetime000
+
+var datetime010 = $('#datetime010').datetimepicker({
+	stepMinute: 15,
+	hourGrid: 3,
+	minuteGrid: 15,
+	stepHour: 1,
+	hour: 17,
+	minute: 00,
+	timeFormat: 'hh:mm:ss',
+	dateFormat: 'yy-mm-dd',
+	timezone: 'America/New_York',
+    onClose: function(dateText, inst) {
+        var startDateTextBox = $('#datetime002');
+        if (startDateTextBox.val() != '') {
+            var testStartDate = new Date(startDateTextBox.val());
+            var testEndDate = new Date(dateText);
+            if (testStartDate > testEndDate)
+                startDateTextBox.val(dateText);
+        }
+        else {
+            startDateTextBox.val(dateText);
+        }
+    },
+    onSelect: function (selectedDateTime){
+        var end = $(this).datetimepicker('getDate');
+        $('#datetime002').datetimepicker('option', 'maxDate', new Date(end.getTime()) );
+//	DatePicked();
+    }
+});
+// end day 4
+
+//start day 5
+var datetime011 = $('#datetime011').datetimepicker({
+	stepMinute: 15,
+		stepHour: 1,
+		hourGrid: 3,
+	minuteGrid: 15,
+			hour: 9,
+	minute: 00,
+	timeFormat: 'hh:mm:ss',
+	dateFormat: 'yy-mm-dd',
+	timezone: 'America/New_York',
+
+    onClose: function(dateText, inst) {
+        var endDateTextBox = $('#datetime003');
+        if (endDateTextBox.val() != '') {
+            var testStartDate = new Date(dateText);
+            var testEndDate = new Date(endDateTextBox.val());
+            if (testStartDate > testEndDate)
+                endDateTextBox.val(dateText);
+        }
+        else {
+            endDateTextBox.val(dateText);
+        }
+    },
+    onSelect: function (selectedDateTime){
+        var start = $(this).datetimepicker('getDate');
+        $('#datetime003').datetimepicker('option', 'minDate', new Date(start.getTime()));
+    }
+});
+// end var datetime000
+
+var datetime003 = $('#datetime003').datetimepicker({
+	stepMinute: 15,
+	hourGrid: 3,
+	minuteGrid: 15,
+	stepHour: 1,
+	hour: 17,
+	minute: 00,
+	timeFormat: 'hh:mm:ss',
+	dateFormat: 'yy-mm-dd',
+	timezone: 'America/New_York',
+    onClose: function(dateText, inst) {
+        var startDateTextBox = $('#datetime011');
+        if (startDateTextBox.val() != '') {
+            var testStartDate = new Date(startDateTextBox.val());
+            var testEndDate = new Date(dateText);
+            if (testStartDate > testEndDate)
+                startDateTextBox.val(dateText);
+        }
+        else {
+            startDateTextBox.val(dateText);
+        }
+    },
+    onSelect: function (selectedDateTime){
+        var end = $(this).datetimepicker('getDate');
+        $('#datetime011').datetimepicker('option', 'maxDate', new Date(end.getTime()) );
+//	DatePicked();
+    }
+});
+// end day 5
+
+//start day 6
+var datetime004 = $('#datetime004').datetimepicker({
+	stepMinute: 15,
+		stepHour: 1,
+		hourGrid: 3,
+	minuteGrid: 15,
+			hour: 9,
+	minute: 00,
+	timeFormat: 'hh:mm:ss',
+	dateFormat: 'yy-mm-dd',
+	timezone: 'America/New_York',
+
+    onClose: function(dateText, inst) {
+        var endDateTextBox = $('#datetime012');
+        if (endDateTextBox.val() != '') {
+            var testStartDate = new Date(dateText);
+            var testEndDate = new Date(endDateTextBox.val());
+            if (testStartDate > testEndDate)
+                endDateTextBox.val(dateText);
+        }
+        else {
+            endDateTextBox.val(dateText);
+        }
+    },
+    onSelect: function (selectedDateTime){
+        var start = $(this).datetimepicker('getDate');
+        $('#datetime012').datetimepicker('option', 'minDate', new Date(start.getTime()));
+    }
+});
+// end var datetime000
+
+var datetime012 = $('#datetime012').datetimepicker({
+	stepMinute: 15,
+	hourGrid: 3,
+	minuteGrid: 15,
+	stepHour: 1,
+	hour: 17,
+	minute: 00,
+	timeFormat: 'hh:mm:ss',
+	dateFormat: 'yy-mm-dd',
+	timezone: 'America/New_York',
+    onClose: function(dateText, inst) {
+        var startDateTextBox = $('#datetime004');
+        if (startDateTextBox.val() != '') {
+            var testStartDate = new Date(startDateTextBox.val());
+            var testEndDate = new Date(dateText);
+            if (testStartDate > testEndDate)
+                startDateTextBox.val(dateText);
+        }
+        else {
+            startDateTextBox.val(dateText);
+        }
+    },
+    onSelect: function (selectedDateTime){
+        var end = $(this).datetimepicker('getDate');
+        $('#datetime004').datetimepicker('option', 'maxDate', new Date(end.getTime()) );
+//	DatePicked();
+    }
+});
+// end day 6
+
+//start day 7
+var datetime005 = $('#datetime005').datetimepicker({
+	stepMinute: 15,
+		stepHour: 1,
+		hourGrid: 3,
+	minuteGrid: 15,
+			hour: 9,
+	minute: 00,
+	timeFormat: 'hh:mm:ss',
+	dateFormat: 'yy-mm-dd',
+	timezone: 'America/New_York',
+
+    onClose: function(dateText, inst) {
+        var endDateTextBox = $('#datetime013');
+        if (endDateTextBox.val() != '') {
+            var testStartDate = new Date(dateText);
+            var testEndDate = new Date(endDateTextBox.val());
+            if (testStartDate > testEndDate)
+                endDateTextBox.val(dateText);
+        }
+        else {
+            endDateTextBox.val(dateText);
+        }
+    },
+    onSelect: function (selectedDateTime){
+        var start = $(this).datetimepicker('getDate');
+        $('#datetime013').datetimepicker('option', 'minDate', new Date(start.getTime()));
+    }
+});
+
+var datetime013 = $('#datetime013').datetimepicker({
+	stepMinute: 15,
+	hourGrid: 3,
+	minuteGrid: 15,
+	stepHour: 1,
+	hour: 17,
+	minute: 00,
+	timeFormat: 'hh:mm:ss',
+	dateFormat: 'yy-mm-dd',
+	timezone: 'America/New_York',
+    onClose: function(dateText, inst) {
+        var startDateTextBox = $('#datetime005');
+        if (startDateTextBox.val() != '') {
+            var testStartDate = new Date(startDateTextBox.val());
+            var testEndDate = new Date(dateText);
+            if (testStartDate > testEndDate)
+                startDateTextBox.val(dateText);
+        }
+        else {
+            startDateTextBox.val(dateText);
+        }
+    },
+    onSelect: function (selectedDateTime){
+        var end = $(this).datetimepicker('getDate');
+        $('#datetime005').datetimepicker('option', 'maxDate', new Date(end.getTime()) );
+//	DatePicked();
+    }
+});
+// end day 7
+
+
+
+
+//var totalhours = $("#totalhours");
+
+var hoursworked1 = $("#hoursworked1");
+var hoursworked2 = $("#hoursworked2");
+var hoursworked3 = $("#hoursworked3");
+var hoursworked4 = $("#hoursworked4");
+var hoursworked5 = $("#hoursworked5");
+var hoursworked6 = $("#hoursworked6");
+var hoursworked7 = $("#hoursworked7");
+
+ //               var triggeringElement = $(this);
+
+var datetime007Date = datetime007.datetimepicker("getDate");
+var datetime008Date = datetime008.datetimepicker("getDate");
+var datetime000Date = datetime000.datetimepicker("getDate");
+var datetime006Date = datetime006.datetimepicker("getDate");
+var datetime001Date = datetime001.datetimepicker("getDate");
+var datetime009Date = datetime009.datetimepicker("getDate");
+var datetime002Date = datetime002.datetimepicker("getDate");
+var datetime010Date = datetime010.datetimepicker("getDate");
+var datetime011Date = datetime011.datetimepicker("getDate");
+var datetime003Date = datetime003.datetimepicker("getDate");
+var datetime004Date = datetime004.datetimepicker("getDate");
+var datetime012Date = datetime012.datetimepicker("getDate");
+var datetime005Date = datetime005.datetimepicker("getDate");
+var datetime013Date = datetime013.datetimepicker("getDate");
+var oneDay = 1000*60*60;
+//check if 
+if (datetime008Date==null) {
+difference = 0;
+} else {
+var difference = ((datetime008Date.getTime() - datetime007Date.getTime()) / oneDay);
+};
+
+if (datetime006Date==null) {
+difference2 = 0;
+} else {
+var difference2 = ((datetime006Date.getTime() - datetime000Date.getTime()) / oneDay);
+};
+
+if (datetime009Date==null) {
+difference3 = 0;
+} else {
+var difference3 = ((datetime009Date.getTime() - datetime001Date.getTime()) / oneDay);
+};
+
+if (datetime010Date==null) {
+difference4 = 0;
+} else {
+var difference4 = ((datetime010Date.getTime() - datetime002Date.getTime()) / oneDay);
+};
+
+if (datetime003Date==null) {
+difference5 = 0;
+} else {
+var difference5 = ((datetime003Date.getTime() - datetime011Date.getTime()) / oneDay);
+};
+
+if (datetime012Date==null) {
+difference6 = 0;
+} else {
+var difference6 = ((datetime012Date.getTime() - datetime004Date.getTime()) / oneDay);
+};
+
+if (datetime013Date==null) {
+difference7 = 0;
+} else {
+var difference7 = ((datetime013Date.getTime() - datetime005Date.getTime()) / oneDay);
+};
+
+                 {
+			var differencedecimal = difference.toFixed(2)
+                        hoursworked1.val(differencedecimal);
+                }        
+                                 {
+			var differencedecimal2 = difference2.toFixed(2)
+                        hoursworked2.val(differencedecimal2);
+                }        
+                                 {
+			var differencedecimal3 = difference3.toFixed(2)
+                        hoursworked3.val(differencedecimal3);
+                }        
+                                 {
+			var differencedecimal4 = difference4.toFixed(2)
+                        hoursworked4.val(differencedecimal4);
+                }        
+                                 {
+			var differencedecimal5 = difference5.toFixed(2)
+                        hoursworked5.val(differencedecimal5);
+                }        
+                                 {
+			var differencedecimal6 = difference6.toFixed(2)
+                        hoursworked6.val(differencedecimal6);
+                }        
+                                 {
+			var differencedecimal7 = difference7.toFixed(2)
+                        hoursworked7.val(differencedecimal7);
+                }        
+
+                 };
+                 // end var DatePicked
+
+    </script>
+<div>
+    <label for="datetime007">Day 1 </label>
+    <input type="text" name="datetime007" id="datetime007" value="" /> -  <input type="text" name="datetime008" id="datetime008" value="" /> <label for="hoursworked1">Hours</label>
+    <input type="text" id="hoursworked1" name="hoursworked1" value="0" readonly="readonly"/>
+</div>
+<div>
+    <label for="datetime000">Day 2 </label>
+    <input type="text" name="datetime000" id="datetime000" value="" /> -  <input type="text" name="datetime006" id="datetime006" value="" /> <label for="hoursworked2">Hours</label>
+    <input type="text" id="hoursworked2" name="hoursworked2" value="0" readonly="readonly"/>
+</div>
+<div>
+    <label for="datetime001">Day 3 </label>
+    <input type="text" name="datetime001" id="datetime001" value="" /> -  <input type="text" name="datetime009" id="datetime009" value="" /> <label for="hoursworked3">Hours</label>
+    <input type="text" id="hoursworked3" name="hoursworked3" value="0" readonly="readonly"/>
+</div>
+<div>
+    <label for="datetime002">Day 4 </label>
+    <input type="text" name="datetime002" id="datetime002" value="" /> -  <input type="text" name="datetime010" id="datetime010" value="" /> <label for="hoursworked4">Hours</label>
+    <input type="text" id="hoursworked4" name="hoursworked4" value="0" readonly="readonly"/>
+</div>
+<div>
+    <label for="datetime011">Day 5 </label>
+    <input type="text" name="datetime011" id="datetime011" value="" /> -  <input type="text" name="datetime003" id="datetime003" value="" /> <label for="hoursworked5">Hours</label>
+    <input type="text" id="hoursworked5" name="hoursworked5" value="0" readonly="readonly"/>
+</div>
+<div>
+    <label for="datetime004">Day 6 </label>
+    <input type="text" name="datetime004" id="datetime004" value="" /> -  <input type="text" name="datetime012" id="datetime012" value="" /> <label for="hoursworked6">Hours</label>
+    <input type="text" id="hoursworked6" name="hoursworked6" value="0" readonly="readonly"/>
+</div>
+<div>
+    <label for="datetime005">Day 7 </label>
+    <input type="text" name="datetime005" id="datetime005" value="" /> -  <input type="text" name="datetime013" id="datetime013" value="" /> <label for="hoursworked7">Hours</label>
+    <input type="text" id="hoursworked7" name="hoursworked7" value="0" readonly="readonly"/>
+</div>
+
+
+
+<!--<div>
+    <label for="totalhours">totalhours</label>
+    <input type="text" id="totalhours" name="totalhours" value="" readonly="readonly"/>
+</div>-->
+<div>
+
+<input type="button" value="Calculate hours" onclick="doMath();" />
+Total Hours:<b id='boldStuff'>0</b>
+<script type="text/javascript">
+    function doMath()
+    {                    DatePicked();
+
+        // Capture the entered values of two input boxes
+        var hoursworked11 = document.getElementById('hoursworked1').value;
+        var hoursworked22 = document.getElementById('hoursworked2').value;
+        var hoursworked33 = document.getElementById('hoursworked3').value;
+        var hoursworked44 = document.getElementById('hoursworked4').value;
+        var hoursworked55 = document.getElementById('hoursworked5').value;
+        var hoursworked66 = document.getElementById('hoursworked6').value;
+        var hoursworked77 = document.getElementById('hoursworked7').value;
+
+        // Add them together and display
+//        var sum = parseInt(hoursworked11) + parseInt(hoursworked22);
+        var sum = parseFloat("1");
+        var sum = parseFloat(hoursworked11) + parseFloat(hoursworked22) + parseFloat(hoursworked33) + parseFloat(hoursworked44) + parseFloat(hoursworked55) + parseFloat(hoursworked66) + parseFloat(hoursworked77);
+if(isNaN(sum)){
+	document.getElementById('boldStuff').innerHTML = "please fill in all blanks";
+
+
+}else{
+
+	document.getElementById('boldStuff').innerHTML = sum;
+//	        document.write(sum);
+    }
+ }
+</script>
+
+</div>
+<input type="hidden" id="datetime007-tz" name="datetime007-tz" value="America/New_York">
+<input type="hidden" id="datetime008-tz" name="datetime008-tz" value="America/New_York">
+<p><input type="submit" name="submit" value="Save record"></p>
+</form><!-- #public_form# end --><!-- do not change this line --><!-- END OF TRACKVIA PUBLIC FORM --><!-- (cut-and-paste ending here) -->
+</td></tr>
+
+<!-- DATETIME START -->
+
+</table>
+</div>
+</body>
+</html>
